@@ -82,7 +82,7 @@ public class Hospital {
     
     public String toString(){
         double sSueldos = 0;
-        String cadena = String.format("%s\nDirección: %s\nCiudad: %s\nProvincia"
+        String cadena = String.format("\nDirección: %s\nCiudad: %s\nProvincia"
                 + ": %s\nNúmero de Especialidad: %s\nListado de Médicos", 
                 obtenerNombre().toUpperCase(),
                 obtenerDireccion(),
