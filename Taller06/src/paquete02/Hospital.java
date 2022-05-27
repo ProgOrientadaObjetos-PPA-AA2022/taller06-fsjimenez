@@ -17,6 +17,7 @@ public class Hospital {
     private double sueldoTotal;
     private String direccion;
     private int numeroEsp;
+    private double sumaSueldos;
     
     public Hospital(Medico[] medic, Enfermero[] enf){
         medico = medic;
@@ -78,31 +79,37 @@ public class Hospital {
         return direccion;
     }
     
+    public void establecerSumaSueldos(double s){
+        sumaSueldos = s;
+    }
+    
+    
     @Override
     
     public String toString(){
-        double sSueldos = 0;
-        String cadena = String.format("\nDirección: %s\nCiudad: %s\nProvincia"
-                + ": %s\nNúmero de Especialidad: %s\nListado de Médicos", 
+        String cadena = String.format("%s\nDirección: %s\nCiudad: %s\nProvincia"
+                + ": %s\nNúmero de Especialidades: %s\nListado de Médicos\n", 
                 obtenerNombre().toUpperCase(),
                 obtenerDireccion(),
                 obtenerCiudad().obtenerNombre(),
-                obtenerCiudad().obtenerProvincia());
+                obtenerCiudad().obtenerProvincia(),
+                obtenerNumeroEsp());
+        
         for (int i = 0; i < obtenerMedico().length; i++) {
-            cadena = String.format("%s - %s - sueldo: %s - %s\n", cadena,
+            cadena = String.format("\n%s - %s - sueldo: %s - %s\n", cadena,
                                            obtenerMedico()[i].obtenerNombre(),
                                            obtenerMedico()[i].obtenerSueldo(),
                                            obtenerMedico()[i].obtenerEsp());
-            sSueldos += obtenerMedico()[i].obtenerSueldo();
         }
         cadena = String.format("%sListado de enfermeros: \n", cadena);
         for (int i = 0; i < obtenerEnfermero().length; i++) {
-            cadena = String.format("%s - %s - sueldo: %s - %s\n", cadena,
+            cadena = String.format("\n%s - %s - sueldo: %s - %s\n", cadena,
                                            obtenerEnfermero()[i].obtenerNombre(),
                                            obtenerEnfermero()[i].obtenerSueldo(),
                                            obtenerEnfermero()[i].obtenerTipo());
-            sSueldos += obtenerEnfermero()[i].obtenerSueldo();
         }
+        cadena = String.format("%sSuma de sueldos a pagar: %s", cadena,
+                                                        sumaSueldos);
         return cadena;
     }
     
